@@ -327,6 +327,21 @@ document.getElementById('exportBtn').addEventListener('click', () => {
   a.click();
   URL.revokeObjectURL(url);
 });
+document.getElementById('loadSampleBtn') && document.getElementById('loadSampleBtn').addEventListener('click', async () => {
+  if (!confirm('現在のデータを置き換えて、初期タスク一式を読み込みます。よろしいですか？')) return;
+  try {
+    const res = await fetch('./initial-data.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const imported = await res.json();
+    data = Object.assign(defaultData(), imported);
+    saveData();
+    renderToday(); renderRewards(); renderHistory(); renderSettings();
+    alert('読み込みました');
+  } catch (err) {
+    alert('読み込みに失敗しました：' + err.message);
+  }
+});
+
 document.getElementById('importFile').addEventListener('change', (e) => {
   const file = e.target.files[0];
   if (!file) return;
