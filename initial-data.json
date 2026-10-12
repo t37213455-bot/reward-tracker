@@ -1,0 +1,21 @@
+{
+  "tasks": [
+    { "id": "t1", "name": "ランニング2km（休日）", "points": 20, "days": [] },
+    { "id": "t2", "name": "ウォーキング30分（出勤日）", "points": 10, "days": [] },
+    { "id": "t3", "name": "自制（我慢）", "points": 15, "days": [2, 5] },
+    { "id": "t4", "name": "毎食腹8分目", "points": 10, "days": [] },
+    { "id": "t5", "name": "水2L飲む", "points": 10, "days": [] },
+    { "id": "t6", "name": "週1冊読書", "points": 30, "days": [0] },
+    { "id": "t7", "name": "読書紹介文作成", "points": 20, "days": [0] },
+    { "id": "t8", "name": "プロテイン1日1回", "points": 5, "days": [] }
+  ],
+  "rewards": [
+    { "id": "r1", "name": "例：コンビニスイーツ", "cost": 50 },
+    { "id": "r2", "name": "例：ご褒美ごはん", "cost": 500 },
+    { "id": "r3", "name": "例：旅行", "cost": 5000 }
+  ],
+  "logs": [],
+  "completions": {},
+  "balance": 0,
+  "settings": { "notifyEnabled": false, "notifyTime": "08:00", "lastFired": null }
+}

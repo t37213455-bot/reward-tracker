@@ -5,8 +5,14 @@ const DAY_LABELS = ['日','月','火','水','木','金','土'];
 function defaultData() {
   return {
     tasks: [
-      { id: uid(), name: '例：朝のストレッチ', points: 5, days: [] },
-      { id: uid(), name: '例：日報を書く', points: 10, days: [] }
+      { id: uid(), name: 'ランニング2km（休日）', points: 20, days: [] },
+      { id: uid(), name: 'ウォーキング30分（出勤日）', points: 10, days: [] },
+      { id: uid(), name: '自制（我慢）', points: 15, days: [2, 5] },
+      { id: uid(), name: '毎食腹8分目', points: 10, days: [] },
+      { id: uid(), name: '水2L飲む', points: 10, days: [] },
+      { id: uid(), name: '週1冊読書', points: 30, days: [0] },
+      { id: uid(), name: '読書紹介文作成', points: 20, days: [0] },
+      { id: uid(), name: 'プロテイン1日1回', points: 5, days: [] }
     ],
     rewards: [
       { id: uid(), name: '例：コンビニスイーツ', cost: 50 },
