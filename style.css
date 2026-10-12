@@ -1,0 +1,123 @@
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body {
+  margin: 0; padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  background: #f4f6f8;
+  color: #222;
+  height: 100%;
+  overscroll-behavior: none;
+}
+body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  padding: calc(14px + env(safe-area-inset-top)) 16px 14px;
+  background: linear-gradient(135deg, #2878c8, #1b5aa0);
+}
+.balance-card { text-align: center; color: #fff; }
+.balance-label { font-size: 13px; opacity: 0.85; }
+.balance-value { font-size: 40px; font-weight: 700; line-height: 1.2; }
+.balance-value::after { content: " pt"; font-size: 18px; font-weight: 400; }
+
+main.view { display: none; padding: 16px 16px 24px; max-width: 560px; margin: 0 auto; }
+main.view.active { display: block; }
+
+.section-title { font-size: 15px; color: #555; margin: 18px 0 8px; font-weight: 600; }
+.section-title:first-of-type { margin-top: 4px; }
+
+.task-list, .reward-list, .history-list, .task-settings-list { list-style: none; margin: 0; padding: 0; }
+
+.task-item {
+  display: flex; align-items: center; gap: 12px;
+  background: #fff; border-radius: 14px; padding: 14px;
+  margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: background 0.2s;
+}
+.task-item.done { background: #eaf6ec; }
+.task-check {
+  width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ccc;
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: transparent; background: #fff;
+}
+.task-item.done .task-check { background: #34a853; border-color: #34a853; color: #fff; }
+.task-main { flex: 1; }
+.task-name { font-size: 16px; font-weight: 500; }
+.task-item.done .task-name { text-decoration: line-through; color: #888; }
+.task-points { font-size: 13px; color: #2878c8; font-weight: 600; }
+
+.reward-item {
+  display: flex; align-items: center; justify-content: space-between;
+  background: #fff; border-radius: 14px; padding: 14px;
+  margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.reward-main .reward-name { font-size: 16px; font-weight: 500; }
+.reward-main .reward-cost { font-size: 13px; color: #888; }
+.redeem-btn {
+  border: none; border-radius: 20px; padding: 10px 16px; font-size: 14px;
+  font-weight: 600; background: #2878c8; color: #fff;
+}
+.redeem-btn:disabled { background: #ccc; color: #888; }
+.reward-del { border: none; background: none; color: #c33; font-size: 13px; margin-top: 4px; }
+
+.history-item {
+  background: #fff; border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
+  display: flex; justify-content: space-between; font-size: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.history-item .h-left { color: #333; }
+.history-item .h-date { font-size: 12px; color: #999; }
+.history-item .h-points.plus { color: #34a853; font-weight: 700; }
+.history-item .h-points.minus { color: #c33; font-weight: 700; }
+
+.task-settings-list .task-item { align-items: flex-start; }
+.task-settings-list .task-check { display: none; }
+.settings-del { border: none; background: #fdecec; color: #c33; border-radius: 10px; padding: 8px 12px; font-size: 13px; }
+.task-days { font-size: 12px; color: #999; margin-top: 4px; }
+
+.add-btn {
+  width: 100%; padding: 14px; margin-top: 10px; border: none; border-radius: 14px;
+  background: #2878c8; color: #fff; font-size: 15px; font-weight: 600;
+}
+.add-btn.secondary { background: #e8edf3; color: #2878c8; margin-top: 14px; }
+
+.setting-row {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff; border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
+}
+.hint-text { font-size: 12px; color: #999; margin-top: 6px; }
+.empty-hint { color: #999; font-size: 14px; text-align: center; margin-top: 30px; }
+
+.tabbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 10;
+  display: flex; background: #fff; border-top: 1px solid #e3e3e3;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tab-btn {
+  flex: 1; border: none; background: none; padding: 10px 0 6px;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  font-size: 11px; color: #999;
+}
+.tab-btn.active { color: #2878c8; }
+.tab-icon { font-size: 20px; }
+
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100;
+  display: none; align-items: center; justify-content: center; padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: #fff; border-radius: 16px; padding: 20px; width: 100%; max-width: 400px;
+}
+.modal-box h3 { margin-top: 0; font-size: 17px; }
+.modal-box label { font-size: 13px; color: #666; display: block; margin-top: 12px; margin-bottom: 4px; }
+.modal-box input[type=text], .modal-box input[type=number] {
+  width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px;
+}
+.modal-box .days-row { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+.modal-box .day-chip {
+  border: 1px solid #ccc; border-radius: 16px; padding: 6px 10px; font-size: 12px; background: #fff;
+}
+.modal-box .day-chip.selected { background: #2878c8; color: #fff; border-color: #2878c8; }
+.modal-actions { display: flex; gap: 10px; margin-top: 18px; }
+.modal-actions button { flex: 1; padding: 12px; border-radius: 10px; border: none; font-size: 15px; font-weight: 600; }
+.modal-actions .cancel-btn { background: #eee; color: #555; }
+.modal-actions .save-btn { background: #2878c8; color: #fff; }

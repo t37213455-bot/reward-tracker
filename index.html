@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#2878c8">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="manifest" href="manifest.json">
+<title>リマインド＆ポイント</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="balance-card">
+    <div class="balance-label">現在のポイント</div>
+    <div class="balance-value" id="balanceValue">0</div>
+  </div>
+</header>
+
+<main id="view-today" class="view active">
+  <h2 class="section-title" id="todayDateLabel">今日のタスク</h2>
+  <ul class="task-list" id="todayTaskList"></ul>
+  <p class="empty-hint" id="todayEmptyHint" style="display:none">今日のタスクはありません。設定タブで追加してください。</p>
+</main>
+
+<main id="view-rewards" class="view">
+  <h2 class="section-title">ご褒美と交換</h2>
+  <ul class="reward-list" id="rewardList"></ul>
+  <button class="add-btn" id="addRewardBtn">＋ ご褒美を追加</button>
+</main>
+
+<main id="view-history" class="view">
+  <h2 class="section-title">履歴</h2>
+  <ul class="history-list" id="historyList"></ul>
+  <p class="empty-hint" id="historyEmptyHint" style="display:none">履歴はまだありません。</p>
+</main>
+
+<main id="view-settings" class="view">
+  <h2 class="section-title">タスク設定</h2>
+  <ul class="task-settings-list" id="taskSettingsList"></ul>
+  <button class="add-btn" id="addTaskBtn">＋ タスクを追加</button>
+
+  <h2 class="section-title">通知設定</h2>
+  <div class="setting-row">
+    <label for="notifyEnabled">リマインド通知</label>
+    <input type="checkbox" id="notifyEnabled">
+  </div>
+  <div class="setting-row">
+    <label for="notifyTime">通知時刻</label>
+    <input type="time" id="notifyTime" value="08:00">
+  </div>
+  <button class="add-btn secondary" id="enableNotifyBtn">通知を許可する</button>
+  <p class="hint-text" id="notifyStatus"></p>
+
+  <h2 class="section-title">データ管理</h2>
+  <button class="add-btn secondary" id="exportBtn">バックアップを書き出す</button>
+  <label class="add-btn secondary" for="importFile" style="display:block;text-align:center;cursor:pointer;">バックアップを読み込む</label>
+  <input type="file" id="importFile" accept="application/json" style="display:none">
+</main>
+
+<nav class="tabbar">
+  <button class="tab-btn active" data-view="today">
+    <span class="tab-icon">✅</span><span>今日</span>
+  </button>
+  <button class="tab-btn" data-view="rewards">
+    <span class="tab-icon">🎁</span><span>ご褒美</span>
+  </button>
+  <button class="tab-btn" data-view="history">
+    <span class="tab-icon">📜</span><span>履歴</span>
+  </button>
+  <button class="tab-btn" data-view="settings">
+    <span class="tab-icon">⚙️</span><span>設定</span>
+  </button>
+</nav>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box" id="modalBox"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
